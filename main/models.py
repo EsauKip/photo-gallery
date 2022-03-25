@@ -13,9 +13,9 @@ class  Category(models.Model):
 
 
 class  Image(models.Model):
-    category=models.ForeignKey(Category,on_delete=models.SET_NULL)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
     image=models.ImageField(null=False,blank=False)
-    description = models.CharField(max_length=600,null=False,blank=False)
+    description = models.TextField()
 
 
     def __str__(self):
