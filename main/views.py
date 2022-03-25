@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Category,Image
 # Create your views here.
 def gallery(request):
-    categories=Category.object.all()
+    categories=Category.objects.all()
     context={'categories':categories}
     return render(request,'main/gallery.html',context)
 
