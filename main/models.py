@@ -20,3 +20,12 @@ class  Image(models.Model):
 
     def __str__(self):
         return self.description 
+
+class Location(models.Model):
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
+    name=models.CharField(null=False,blank=False,max_length=100)
+
+
+    
+    def __str__(self):
+        return self.name 
