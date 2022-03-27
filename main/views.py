@@ -8,6 +8,7 @@ def gallery(request):
     location=Location.get_locations()
     context={'categories':categories,'images':images,'location':location}
     return render(request,'main/gallery.html',context,)
+    
 def image_location(request,location_name):
     location=Location.get_locations()
     image= Image.fetch_by_location(location_name)
