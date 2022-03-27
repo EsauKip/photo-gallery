@@ -3,11 +3,11 @@ from django.db import models
 
 # Create your models here.
 class  Category(models.Model):
-    name = models.CharField(max_length=100,null=False,blank=False)
+    category_name = models.CharField(max_length=100,null=False,blank=False)
 
 
     def __str__(self):
-        return self.name
+        return self.category_name
 
     def save_category(self):
         self.save()
@@ -17,12 +17,12 @@ class  Category(models.Model):
 
 class Location(models.Model):
     
-    name=models.CharField(null=False,blank=False,max_length=100)
+    location_name=models.CharField(null=False,blank=False,max_length=100)
 
 
     
     def __str__(self):
-        return self.name 
+        return self.location_name 
     def save_location(self):
         self.save()
 

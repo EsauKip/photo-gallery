@@ -1,12 +1,18 @@
 
 from django.shortcuts import render,redirect
-from .models import Category,Image
+from .models import Category,Image,Location
 # Create your views here.
 def gallery(request):
     categories=Category.objects.all()
     images=Image.objects.all()
-    context={'categories':categories,'images':images}
-    return render(request,'main/gallery.html',context)
+    location=Location.get_locations()
+    context={'categories':categories,'images':images,'location':location}
+    return render(request,'main/gallery.html',context,)
+def image_location(request,location_name):
+    location=Location.get_locations()
+    image= Image.fetch_by_location(location_name)
+    message = f"{location_name}"
+    return render(request,'imageLocation.html',{"message":message,"image": image,"location":location})
 
 def viewPhoto(request,pk):
     image=Image.objects.get(id=pk)
