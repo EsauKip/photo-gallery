@@ -1,14 +1,30 @@
 {%extends 'base.html'%}
+{% load bootstrap4 %}
+
 {% block content %}
 {{block.super}}
-    <div class="container">
-        <div class="row justify-content-center ">
-            <div class="col">
-            <a href="{% url 'gallery' %}" class="btn btn-primary my-3">Gallery</a> 
-            </div>
-            <div style="height:90vh;">
-                <img style="max-height:100%; max-width:100%;"src="{{image.image.url}}">
-                <p>{{image.description}}</p>         </div>
+<div class="container m-5">
+    <div class="row justify-content-center">
+        <div class="col">
+             <a class="btn btn-outline-dark btn-sn  m-1" href="{% url 'gallery' %}">Gallery</a>
+        <div style ="height: 90vh;">
+        <img  style="max-width: 100%; max-height: 100%;"
+        src="{{image.image.url}}">
+         <p>{{image.description}}</p>
+         <p>This photo was taken at:{{image.location}}</p>
+         <input style="text-align:center;" type="text" value="{{image.image.url}}" id="url">
+         <button style="background:blue; color:white; text-align:center;" onclick="CopyUrl()">Copy Image URL</button>
         </div>
-    </div>
-{%endblock%}
+        </div>
+        {% block scripts %}
+        {% bootstrap_javascript %}
+        <script>
+        function CopyUrl() {
+        var text = document.getElementById('url')
+        text.select();
+        document.execCommand('copy')
+        alert('The image URL has been copied')
+        }
+        </script>
+         {% endblock %}
+{% endblock %}

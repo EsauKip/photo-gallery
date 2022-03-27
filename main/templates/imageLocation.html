@@ -1,5 +1,6 @@
 {%extends 'base.html'%}
 {% block content %}
+{% load bootstrap4 %}
 {{block.super}}
 <div class="row">
     {% if image%}
@@ -36,6 +37,7 @@
                         <input id="{{image.id}}-url" class="form-control input-md responsive" type="text"
                             value="{{image.image.url}}">
                     </div>
+                    
                 </div>
             </div>
         </div>
