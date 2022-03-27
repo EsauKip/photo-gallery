@@ -9,4 +9,8 @@ class CategoryTestClass(TestCase):
         self.travel= Category(category_name='Travel')
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.travel,Category))   
+        self.assertTrue(isinstance(self.travel,Category))
+    def test_save_method(self):
+        self.travel.save_category()
+        category = Category.objects.all()
+        self.assertTrue(len(category) > 0)        
